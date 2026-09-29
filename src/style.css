@@ -11,6 +11,9 @@ body {
 }
 
 
+/* =========================
+   MAIN PAGE
+========================= */
 
 .page {
   min-height: 100vh;
@@ -38,17 +41,24 @@ body {
 }
 
 
+/* =========================
+   HEADING
+========================= */
 
-.page h1 {
+.page > h1 {
   font-size: 42px;
   margin-bottom: 35px;
   color: white;
 }
 
-.page h1 span {
+.page > h1 span {
   color: #ffb300;
 }
 
+
+/* =========================
+   OTP CARD
+========================= */
 
 .otp-card {
   width: 100%;
@@ -61,16 +71,19 @@ body {
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
 
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 
   border-radius: 22px;
 
   box-shadow:
-    0 25px 70px rgba(0,0,0,0.7),
-    inset 0 1px 0 rgba(255,255,255,0.08);
+    0 25px 70px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 
+/* =========================
+   BRAND
+========================= */
 
 .brand {
   color: #ffb300;
@@ -83,14 +96,19 @@ body {
   margin-bottom: 15px;
 }
 
- h2{
-    color: rgb(46, 168, 35);
-}
+
+/* =========================
+   TITLE
+========================= */
 
 .otp-card h2 {
+  color: rgb(46, 168, 35);
+
   font-size: 28px;
+
   margin-bottom: 10px;
 }
+
 
 .description {
   color: #9b9fa5;
@@ -104,9 +122,10 @@ body {
   color: white;
 }
 
-/* =================================
+
+/* =========================
    OTP BOXES
-================================= */
+========================= */
 
 .otp-boxes {
   display: flex;
@@ -118,8 +137,8 @@ body {
   margin-bottom: 28px;
 }
 
-.otp-box {
 
+.otp-box {
   width: 70px;
   height: 70px;
 
@@ -133,65 +152,58 @@ body {
 
   color: transparent;
 
-  background: rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.03);
 
   border: 2px solid #303030;
 
   border-radius: 14px;
 
-  transition:
-    0.35s ease;
-
+  transition: 0.35s ease;
 }
 
 
-/* =================================
-   NUMBER APPEARS
-================================= */
+/* =========================
+   OTP NUMBER APPEARS
+========================= */
 
 .otp-box.active {
-
   color: white;
 
   border-color: #ffb300;
 
-  background:
-    rgba(255,179,0,0.08);
+  background: rgba(255, 179, 0, 0.08);
 
   box-shadow:
-
     0 0 8px #ffb300,
-
-    0 0 20px
-    rgba(255,179,0,0.6),
-
-    0 0 40px
-    rgba(255,179,0,0.25),
-
-    inset 0 0 15px
-    rgba(255,179,0,0.1);
+    0 0 20px rgba(255, 179, 0, 0.6),
+    0 0 40px rgba(255, 179, 0, 0.25),
+    inset 0 0 15px rgba(255, 179, 0, 0.1);
 
   transform:
     translateY(-4px)
     scale(1.05);
 
-  animation:
-    numberLight 0.45s ease;
+  animation: numberLight 0.45s ease;
 }
 
 
-/* NUMBER LIGHT ANIMATION */
+/* =========================
+   NUMBER ANIMATION
+========================= */
 
 @keyframes numberLight {
 
   0% {
     opacity: 0;
+
     transform: scale(0.5);
+
     box-shadow: none;
   }
 
   50% {
     opacity: 1;
+
     transform: scale(1.12);
 
     box-shadow:
@@ -201,20 +213,21 @@ body {
 
   100% {
     opacity: 1;
+
     transform: scale(1.05);
 
     box-shadow:
       0 0 8px #ffb300,
-      0 0 20px rgba(255,179,0,0.6);
+      0 0 20px rgba(255, 179, 0, 0.6);
   }
-
 }
 
 
-/* MESSAGE */
+/* =========================
+   MESSAGE BOX
+========================= */
 
 .message-box {
-
   display: flex;
 
   align-items: center;
@@ -224,19 +237,17 @@ body {
 
   padding: 16px;
 
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 
-  background:
-    rgba(255,255,255,0.04);
+  background: rgba(255, 255, 255, 0.04);
 
-  border:
-    1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
   border-radius: 12px;
 }
 
-.message-box span {
 
+.message-box span {
   color: #ffb300;
 
   font-size: 10px;
@@ -246,8 +257,8 @@ body {
   font-weight: bold;
 }
 
-.message-box p {
 
+.message-box p {
   margin-top: 6px;
 
   color: #aaa;
@@ -256,10 +267,11 @@ body {
 }
 
 
-/* GENERATE */
+/* =========================
+   GENERATE BUTTON
+========================= */
 
 .message-box button {
-
   border: none;
 
   padding: 11px 17px;
@@ -277,39 +289,172 @@ body {
   transition: 0.3s;
 }
 
-.message-box button:hover {
 
+.message-box button:hover {
   background: #ffc107;
 
   box-shadow:
     0 0 10px #ffb300,
-    0 0 25px
-    rgba(255,179,0,0.5);
+    0 0 25px rgba(255, 179, 0, 0.5);
 
-  transform:
-    translateY(-2px);
+  transform: translateY(-2px);
 }
 
 
-/* VERIFY */
+.message-box button:disabled {
+  opacity: 0.5;
 
-.verify-btn {
+  cursor: not-allowed;
 
-  width: 100%;
+  transform: none;
 
-  padding: 15px;
+  box-shadow: none;
+}
 
-  border-radius: 10px;
 
-  border:
-    1px solid #555;
+/* =========================
+   STATUS
+========================= */
 
-  background:
-    rgba(255,255,255,0.04);
+.status {
+  text-align: center;
 
   color: #777;
 
-  font-size: 16px;
+  font-size: 13px;
+}
+
+
+.dot {
+  display: inline-block;
+
+  width: 7px;
+  height: 7px;
+
+  margin-right: 7px;
+
+  border-radius: 50%;
+
+  background: #ffb300;
+
+  box-shadow:
+    0 0 8px #ffb300;
+
+  animation: blink 0.8s infinite alternate;
+}
+
+
+@keyframes blink {
+
+  from {
+    opacity: 0.3;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* =========================
+   SUCCESS PAGE
+========================= */
+
+.success-page {
+  animation: pageIn 0.5s ease;
+}
+
+
+.success-card {
+  width: 100%;
+
+  max-width: 450px;
+
+  padding: 45px 35px;
+
+  text-align: center;
+
+  background: rgba(20, 24, 28, 0.8);
+
+  backdrop-filter: blur(25px);
+
+  border: 1px solid rgba(0, 208, 132, 0.4);
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.7),
+    0 0 35px rgba(0, 208, 132, 0.15);
+}
+
+
+/* =========================
+   SUCCESS CIRCLE
+========================= */
+
+.success-circle {
+  width: 85px;
+  height: 85px;
+
+  margin: 0 auto 25px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border: 3px solid #00e88a;
+
+  color: #00ff95;
+
+  font-size: 45px;
+
+  box-shadow:
+    0 0 15px rgba(0, 255, 150, 0.5),
+    0 0 40px rgba(0, 255, 150, 0.2);
+
+  animation: successPop 0.6s ease;
+}
+
+
+.success-card h1 {
+  color: #4dffb0;
+
+  font-size: 30px;
+
+  margin-bottom: 12px;
+}
+
+
+.success-card p {
+  color: #9ba8a3;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  margin-bottom: 25px;
+}
+
+
+/* =========================
+   CONTINUE BUTTON
+========================= */
+
+.continue-btn {
+  border: none;
+
+  padding: 13px 35px;
+
+  border-radius: 10px;
+
+  background: #00d084;
+
+  color: #07120e;
+
+  font-size: 15px;
 
   font-weight: bold;
 
@@ -319,126 +464,59 @@ body {
 }
 
 
-/* After all numbers appear */
+.continue-btn:hover {
+  background: #00f096;
 
-.verify-btn.ready {
-
-  border-color: #00d084;
-
-  background:
-    rgba(0,208,132,0.12);
-
-  color: #55ffb5;
+  transform: translateY(-2px);
 
   box-shadow:
-    0 0 10px
-    rgba(0,255,150,0.25);
-}
-
-.verify-btn.ready:hover {
-
-  background:
-    rgba(0,208,132,0.25);
-
-  box-shadow:
-    0 0 15px
-    rgba(0,255,150,0.5);
+    0 0 15px rgba(0, 255, 150, 0.5);
 }
 
 
-/* VERIFIED */
+/* =========================
+   ANIMATIONS
+========================= */
 
-.verified-popup {
+@keyframes successPop {
 
-  display: flex;
+  0% {
+    opacity: 0;
 
-  align-items: center;
+    transform: scale(0.4);
+  }
 
-  gap: 15px;
+  70% {
+    transform: scale(1.12);
+  }
 
-  margin-top: 18px;
+  100% {
+    opacity: 1;
 
-  padding: 15px;
-
-  border-radius: 12px;
-
-  border:
-    1px solid #00d084;
-
-  background:
-    rgba(0,208,132,0.12);
-
-  box-shadow:
-    0 0 15px
-    rgba(0,255,150,0.25);
-
-  animation:
-    popup 0.4s ease;
-}
-
-.check-circle {
-
-  width: 42px;
-  height: 42px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  border:
-    2px solid #00e88a;
-
-  color: #00ff95;
-
-  font-size: 23px;
-
-  box-shadow:
-    0 0 10px
-    rgba(0,255,150,0.5);
-}
-
-.verified-popup strong {
-
-  color: #4dffb0;
-
-  font-size: 16px;
-}
-
-.verified-popup p {
-
-  color: #9ba8a3;
-
-  font-size: 12px;
-
-  margin-top: 4px;
+    transform: scale(1);
+  }
 }
 
 
-/* POPUP */
-
-@keyframes popup {
+@keyframes pageIn {
 
   from {
     opacity: 0;
-    transform:
-      translateY(15px)
-      scale(0.95);
+
+    transform: scale(0.95);
   }
 
   to {
     opacity: 1;
-    transform:
-      translateY(0)
-      scale(1);
-  }
 
+    transform: scale(1);
+  }
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 600px) {
 
@@ -446,8 +524,10 @@ body {
     padding: 20px;
   }
 
-  .page h1 {
+  .page > h1 {
     font-size: 30px;
+
+    margin-bottom: 25px;
   }
 
   .otp-card {
@@ -460,7 +540,23 @@ body {
 
   .otp-box {
     width: 54px;
+
     height: 60px;
+
+    font-size: 23px;
   }
 
+  .message-box {
+    align-items: stretch;
+
+    flex-direction: column;
+  }
+
+  .message-box button {
+    width: 100%;
+  }
+
+  .success-card {
+    padding: 40px 25px;
+  }
 }

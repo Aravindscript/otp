@@ -1,48 +1,81 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./style.css";
 
 function App() {
   const [otp, setOtp] = useState("");
   const [displayedOtp, setDisplayedOtp] = useState([]);
-  const [verified, setVerified] = useState(false);
+  const [page, setPage] = useState("otp");
+  const [generating, setGenerating] = useState(false);
 
   const generateOTP = () => {
+    if (generating) return;
+
     const newOTP = Math.floor(
       10000 + Math.random() * 90000
     ).toString();
 
     setOtp(newOTP);
     setDisplayedOtp([]);
-    setVerified(false);
+    setPage("otp");
+    setGenerating(true);
 
     const digits = newOTP.split("");
 
     digits.forEach((digit, index) => {
       setTimeout(() => {
-        setDisplayedOtp((prev) => [
-          ...prev,
-          digit
-        ]);
+        setDisplayedOtp((prev) => [...prev, digit]);
+
+        // After the 5th digit appears
+        if (index === 4) {
+          setTimeout(() => {
+            setPage("success");
+            setGenerating(false);
+          }, 700);
+        }
       }, index * 700);
     });
   };
 
-  useEffect(() => {
-    generateOTP();
-  }, []);
+  // =========================
+  // SUCCESS PAGE
+  // =========================
 
-  const verifyOTP = () => {
-    if (displayedOtp.length < 5) {
-      alert("Please wait until the complete OTP appears.");
-      return;
-    }
+  if (page === "success") {
+    return (
+      <div className="page success-page">
 
-    const enteredOTP = displayedOtp.join("");
+        <div className="success-card">
 
-    if (enteredOTP === otp) {
-      setVerified(true);
-    }
-  };
+          <div className="success-circle">
+            ✓
+          </div>
+
+          <h1>OTP Verified</h1>
+
+          <p>
+            Your number has been successfully verified.
+          </p>
+
+          <button
+            className="continue-btn"
+            onClick={() => {
+              setPage("otp");
+              setDisplayedOtp([]);
+              setOtp("");
+            }}
+          >
+            Continue
+          </button>
+
+        </div>
+
+      </div>
+    );
+  }
+
+  // =========================
+  // OTP PAGE
+  // =========================
 
   return (
     <div className="page">
@@ -65,6 +98,7 @@ function App() {
         </p>
 
         {/* OTP BOXES */}
+
         <div className="otp-boxes">
 
           {[0, 1, 2, 3, 4].map((index) => (
@@ -83,52 +117,40 @@ function App() {
         </div>
 
         {/* MESSAGE */}
+
         <div className="message-box">
 
           <div>
             <span>MESSAGE</span>
 
             <p>
-              NEXORA — OTP generated successfully
+              Click Generate to receive your OTP
             </p>
           </div>
 
-          <button onClick={generateOTP}>
-            Generate
+          <button
+            onClick={generateOTP}
+            disabled={generating}
+          >
+            {generating ? "Generating..." : "Generate"}
           </button>
 
         </div>
 
-        {/* VERIFY BUTTON */}
-        <button
-          className={`verify-btn ${
-            displayedOtp.length === 5
-              ? "ready"
-              : ""
-          }`}
-          onClick={verifyOTP}
-        >
-          Verify OTP
-        </button>
+        {/* STATUS */}
 
-        {/* VERIFIED POPUP */}
-        {verified && (
-          <div className="verified-popup">
+        <div className="status">
 
-            <div className="check-circle">
-              ✓
-            </div>
+          {generating ? (
+            <>
+              <span className="dot"></span>
+              Verifying OTP...
+            </>
+          ) : (
+            "Waiting for OTP"
+          )}
 
-            <div>
-              <strong>OTP Verified</strong>
-
-              <p>
-                Your number has been successfully verified.
-              </p>
-            </div>
-
-          </div>
-        )}
+        </div>
 
       </div>
 
